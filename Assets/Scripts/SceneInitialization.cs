@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids.Scripts
 {
-    public class InputSetup : MonoBehaviour
+    public class SceneInitialization : MonoBehaviour
     {
         private EntityManager entityManager;
 
