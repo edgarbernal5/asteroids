@@ -13,6 +13,7 @@ namespace Asteroids.Scripts.Systems
                 _input.m_inputLeft = Input.GetKey(KeyCode.LeftArrow);
                 _input.m_inputRight = Input.GetKey(KeyCode.RightArrow);
                 _input.m_inputForward = Input.GetKey(KeyCode.UpArrow);
+                _input.m_inputShoot = Input.GetKey(KeyCode.Space);
             }).Run();
         }
     }

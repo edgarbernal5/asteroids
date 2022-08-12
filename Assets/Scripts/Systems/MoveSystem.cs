@@ -19,7 +19,7 @@ namespace Asteroids.Scripts.Systems
                 PhysicsComponentExtensions.ApplyLinearImpulse(
                     ref velocity,
                     physicsMass,
-                    movementCommands.m_currentDirectionOfMove *
+                    movementCommands.m_currentMoveDirection *
                     movementCommands.m_currentLinearCommand *
                     movementParameters.m_linearVelocity
                 );

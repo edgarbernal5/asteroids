@@ -15,7 +15,7 @@ namespace Asteroids.Scripts.Systems
                 in Rotation _rotation) =>
             {
                 var direction = math.mul(_rotation.Value, math.up());
-                movementCommands.m_currentDirectionOfMove = direction;
+                movementCommands.m_currentMoveDirection = direction;
 
             }).Schedule();
         }
