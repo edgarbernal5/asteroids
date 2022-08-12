@@ -16,6 +16,8 @@ namespace Asteroids.Scripts.Systems
                 in MovementParametersComponent movementParameters,
                 in PhysicsMass physicsMass, in Translation translation) =>
             {
+                movementCommands.m_previousPosition = translation.Value;
+
                 PhysicsComponentExtensions.ApplyLinearImpulse(
                     ref velocity,
                     physicsMass,

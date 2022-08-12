@@ -9,5 +9,6 @@ namespace Asteroids.Scripts.Components
         public float3 m_currentMoveDirection;
         public float3 m_currentAngularCommand;
         public float m_currentLinearCommand;
+        public float3 m_previousPosition;
     }
 }

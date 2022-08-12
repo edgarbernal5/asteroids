@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7225903267489081364}
   - component: {fileID: 5691043255777017081}
   - component: {fileID: 1630634113182515424}
+  - component: {fileID: 3791915376610925197}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -128,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5109755b222ed4797bedbfb8ec70b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentDirectionOfMove:
+  m_currentMoveDirection:
     x: 0
     y: 0
     z: 0
@@ -137,6 +138,10 @@ MonoBehaviour:
     y: 0
     z: 0
   m_currentLinearCommand: 1
+  m_previousPosition:
+    x: 0
+    y: 0
+    z: 0
 --- !u!114 &7225903267489081364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,3 +347,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbd1a332a0666b49b05e34741225c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3791915376610925197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211776900235948553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fa266b43ee3ff41ab6ae73e5404f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_mesh: {fileID: 2560092000073347915}
