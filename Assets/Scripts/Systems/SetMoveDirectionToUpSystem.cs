@@ -12,9 +12,9 @@ namespace Asteroids.Scripts.Systems
         {
             Entities.WithAll<MovingInUpDirectionComponent>().ForEach((
                 ref MovementCommandsComponent movementCommands,
-                in Rotation _rotation) =>
+                in Rotation rotation) =>
             {
-                var direction = math.mul(_rotation.Value, math.up());
+                var direction = math.mul(rotation.Value, math.up());
                 movementCommands.m_currentMoveDirection = direction;
 
             }).Schedule();
