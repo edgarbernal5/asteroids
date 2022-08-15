@@ -16,7 +16,6 @@ namespace Assets.Scripts.Systems
                 (Entity _entity, ref OffScreenWrapperComponent offScreen,
                     in MovementCommandsComponent moveComponent, in Translation translation, in PhysicsVelocity velocity) =>
                 {
-                    var previousPosition = moveComponent.m_previousPosition;
                     var currentPosition = translation.Value;
 
                     var isMovingLeft = velocity.Linear.x < 0.0f;
