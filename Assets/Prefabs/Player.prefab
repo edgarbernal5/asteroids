@@ -99,8 +99,9 @@ GameObject:
   - component: {fileID: 9006432037820978892}
   - component: {fileID: 7296355273007861225}
   - component: {fileID: 2923541920723123048}
+  - component: {fileID: 1086289884960216226}
   m_Layer: 0
-  m_Name: Ship
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,10 +159,6 @@ MonoBehaviour:
     y: 0
     z: 0
   m_currentLinearCommand: 0
-  m_previousPosition:
-    x: 0
-    y: 0
-    z: 0
 --- !u!114 &784779943304405971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,3 +418,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversionMode: 0
+--- !u!114 &1086289884960216226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5653345090508110298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca77961f55078b94c92713c5a519f731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_mustBeDestroyed: 0

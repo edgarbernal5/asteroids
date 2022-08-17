@@ -13,6 +13,7 @@ namespace Asteroids.Scripts
         private EntityManager entityManager;
         public Entity m_asteroidLibrary;
 
+        public Entity m_playerEntity;
 
         [SerializeField] private Transform[] m_asteroidsSpawnPositions;
 
@@ -21,8 +22,11 @@ namespace Asteroids.Scripts
         private float m_currentTimer;
         [SerializeField] private float m_asteroidSpawnFrequency = 2.0f;
 
+        public static SceneInitialization m_instance;
+        
         private void Awake()
         {
+            m_instance = this;
             entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
             m_spawnPositionsVectors = new Vector3[m_asteroidsSpawnPositions.Length];
@@ -35,6 +39,7 @@ namespace Asteroids.Scripts
         private void Start()
         {
             entityManager.CreateEntity(typeof(InputComponent));
+            SpawnPlayerAtPosition(Vector3.zero);
         }
 
         private void SpawnAsteroid()
@@ -72,7 +77,22 @@ namespace Asteroids.Scripts
                 m_currentTimer = 0;
                 SpawnAsteroid();
             }
+        }
 
+        public void CheckAndSpawnPlayer()
+        {
+            SpawnPlayerAtPosition(Vector3.zero);
+        }
+
+        private void SpawnPlayerAtPosition(Vector3 position)
+        {
+            var playerFactory = entityManager.GetComponentData<PlayerFactoryElementComponent>(m_playerEntity);
+
+            var playerShip = entityManager.Instantiate(playerFactory.m_player);
+            entityManager.SetComponentData(m_playerEntity, new Translation()
+            {
+                Value = position
+            });
         }
     }
 }
