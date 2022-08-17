@@ -19,9 +19,9 @@ namespace Assets.Scripts.Systems
                 .WithoutBurst()
                 .WithStructuralChanges()
                 .WithAll<ProjectileTagComponent>()
-                .ForEach((Entity entity, in DestroyableComponent _destroyable) =>
+                .ForEach((Entity entity, in DestroyableComponent destroyable) =>
             {
-                if (_destroyable.m_mustBeDestroyed)
+                if (destroyable.m_mustBeDestroyed)
                 { 
                     m_entityManager.DestroyEntity(entity); 
                 }

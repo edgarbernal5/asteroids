@@ -19,33 +19,35 @@ namespace Asteroids.Scripts.Systems
             var deltaTime = Time.DeltaTime;
             var ecb = m_endSimulationEntityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
 
-            Entities.ForEach((Entity _entity, int entityInQueryIndex, ref WeaponComponent _weaponComponent,
-                in Translation _translation,
-                in Rotation _rotation) =>
+            Entities
+                .ForEach((Entity entity, int entityInQueryIndex, ref WeaponComponent weaponComponent,
+                in Translation translation, in Rotation rotation) =>
             {
-                _weaponComponent.m_timer += deltaTime;
+                weaponComponent.m_timer += deltaTime;
 
-                if (!_weaponComponent.m_isFiring) return;
-                if (!(_weaponComponent.m_timer > _weaponComponent.m_fireRate)) return;
+                if (!weaponComponent.m_isFiring) return;
+                if (!(weaponComponent.m_timer > weaponComponent.m_fireRate)) return;
 
-                _weaponComponent.m_timer = 0;
-                var newProjectile = ecb.Instantiate(entityInQueryIndex, _weaponComponent.m_projectilePrefab);
+                weaponComponent.m_timer = 0;
+                var newProjectile = ecb.Instantiate(entityInQueryIndex, weaponComponent.m_projectilePrefab);
 
                 ecb.SetComponent(entityInQueryIndex, newProjectile, new Translation
                 {
-                    Value = _translation.Value
+                    Value = translation.Value
                 });
 
                 ecb.SetComponent(entityInQueryIndex, newProjectile, new Rotation()
                 {
-                    Value = _rotation.Value
+                    Value = rotation.Value
                 });
 
                 ecb.SetComponent(entityInQueryIndex, newProjectile, new MovementCommandsComponent()
                 {
                     m_currentLinearCommand = 1,
                 });
+                
             }).ScheduleParallel();
+            
             m_endSimulationEntityCommandBufferSystem.AddJobHandleForProducer(Dependency);
         }
     }

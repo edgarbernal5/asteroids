@@ -53,6 +53,7 @@ namespace Assets.Scripts.Systems
 
             var jobHandle = job.Schedule(m_stepPhysicsWorld.Simulation, ref m_physicsWorld.PhysicsWorld, inputDeps);
             jobHandle.Complete();
+            
             return jobHandle;
         }
 

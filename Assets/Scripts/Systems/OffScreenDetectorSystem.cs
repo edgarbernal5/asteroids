@@ -13,11 +13,9 @@ namespace Assets.Scripts.Systems
             var screenData = GetSingleton<ScreenInfoComponent>();
 
             Entities.ForEach(
-                (Entity _entity, ref OffScreenWrapperComponent offScreen,
+                (Entity entity, ref OffScreenWrapperComponent offScreen,
                     in MovementCommandsComponent moveComponent, in Translation translation, in PhysicsVelocity velocity) =>
                 {
-                    var currentPosition = translation.Value;
-
                     var isMovingLeft = velocity.Linear.x < 0.0f;
                     var isMovingRight = velocity.Linear.x > 0.0f;
                     var isMovingUp = velocity.Linear.y > 0.0f;

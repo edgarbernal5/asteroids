@@ -19,7 +19,9 @@ namespace Asteroids.Scripts.Systems
             }
             var inputData = array[0];
 
-            Entities.WithAll<PlayerTagComponent>().ForEach((ref MovementCommandsComponent commands, ref WeaponComponent weapon) =>
+            Entities
+                .WithAll<PlayerTagComponent>()
+                .ForEach((ref MovementCommandsComponent commands, ref WeaponComponent weapon) =>
             {
                 var turningLeft = inputData.m_inputLeft ? 1 : 0;
                 var turningRight = inputData.m_inputRight ? 1 : 0;

@@ -19,7 +19,8 @@ namespace Assets.Scripts.Systems
             Entities
                 .WithoutBurst()
                 .WithStructuralChanges()
-                .WithAll<AsteroidTagComponent>().ForEach((
+                .WithAll<AsteroidTagComponent>()
+                .ForEach((
                     Entity entity,
                     in DestroyableComponent destroyable) =>
             {

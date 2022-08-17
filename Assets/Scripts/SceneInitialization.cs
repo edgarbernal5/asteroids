@@ -30,7 +30,7 @@ namespace Asteroids.Scripts
             entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
             m_spawnPositionsVectors = new Vector3[m_asteroidsSpawnPositions.Length];
-            for (int i = 0; i < m_spawnPositionsVectors.Length; i++)
+            for (var i = 0; i < m_spawnPositionsVectors.Length; i++)
             {
                 m_spawnPositionsVectors[i] = m_asteroidsSpawnPositions[i].position;
             }
@@ -57,8 +57,8 @@ namespace Asteroids.Scripts
                 Value = spawnPosition
             });
 
-            var randomMoveDirection = math.normalize(new float3(Random.Range(-.8f, .8f), Random.Range(-.8f, .8f), 0));
-            var randomRotation = math.normalize(new float3(Random.value, Random.value, 0));
+            var randomMoveDirection = math.normalize(new float3(Random.Range(-0.8f, 0.8f), Random.Range(-0.8f, 0.8f), 0));
+            var randomRotation = float3.zero;
 
             entityManager.SetComponentData(newAsteroid, new MovementCommandsComponent()
             {
@@ -89,7 +89,7 @@ namespace Asteroids.Scripts
             var playerFactory = entityManager.GetComponentData<PlayerFactoryElementComponent>(m_playerEntity);
 
             var playerShip = entityManager.Instantiate(playerFactory.m_player);
-            entityManager.SetComponentData(m_playerEntity, new Translation()
+            entityManager.SetComponentData(playerShip, new Translation()
             {
                 Value = position
             });

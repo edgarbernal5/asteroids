@@ -8,12 +8,14 @@ namespace Asteroids.Scripts.Systems
     {
         protected override void OnUpdate()
         {
-            Entities.ForEach((ref InputComponent _input) =>
+            Entities
+                .ForEach((ref InputComponent input) =>
             {
-                _input.m_inputLeft = Input.GetKey(KeyCode.LeftArrow);
-                _input.m_inputRight = Input.GetKey(KeyCode.RightArrow);
-                _input.m_inputForward = Input.GetKey(KeyCode.UpArrow);
-                _input.m_inputShoot = Input.GetKey(KeyCode.Space);
+                input.m_inputLeft = Input.GetKey(KeyCode.LeftArrow);
+                input.m_inputRight = Input.GetKey(KeyCode.RightArrow);
+                input.m_inputForward = Input.GetKey(KeyCode.UpArrow);
+                input.m_inputShoot = Input.GetKey(KeyCode.Space);
+                
             }).Run();
         }
     }

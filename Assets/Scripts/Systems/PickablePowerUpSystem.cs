@@ -1,12 +1,12 @@
 ﻿using Asteroids.Scripts.Components;
 using Unity.Entities;
 
-namespace Asteroids.Scripts.Systems
+namespace Assets.Scripts.Systems
 {
-    public class PlayerDestructionSystem : SystemBase
+    public class PickablePowerUpSystem : SystemBase
     {
         private EntityManager m_entityManager;
-        
+
         protected override void OnCreate()
         {
             base.OnCreate();
@@ -16,17 +16,19 @@ namespace Asteroids.Scripts.Systems
         protected override void OnUpdate()
         {
             Entities
-                .WithStructuralChanges()
                 .WithoutBurst()
-                .WithAll<PlayerTagComponent>()
-                .ForEach((Entity entity, ref DestroyableComponent destroyableComponent) =>
+                .WithStructuralChanges()
+                .WithAll<PickablePowerUpComponent>()
+                .ForEach((
+                    Entity entity,
+                    in DestroyableComponent destroyable) =>
+                {
+                    if (destroyable.m_mustBeDestroyed)
                     {
-                        if (!destroyableComponent.m_mustBeDestroyed) return;
-                        
                         m_entityManager.DestroyEntity(entity);
-                        SceneInitialization.m_instance.CheckAndSpawnPlayer();
                     }
-                ).Run();
+
+                }).Run();
         }
     }
 }

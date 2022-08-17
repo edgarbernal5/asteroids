@@ -13,48 +13,51 @@ namespace Asteroids.Scripts.Systems
             var screenDataComponent = GetSingleton<ScreenInfoComponent>();
 
             Entities.WithAll<OffScreenWrapperComponent>().ForEach((
-                Entity _entity, ref OffScreenWrapperComponent _offScreenWrapperComponent, ref Translation _translation) =>
+                Entity entity, ref OffScreenWrapperComponent offScreenWrapperComponent, ref Translation translation) =>
             {
-                if (_offScreenWrapperComponent.m_isOffScreenLeft)
+                if (offScreenWrapperComponent.m_isOffScreenLeft)
                 {
-                    _translation.Value = SpawnOnRightSide(_translation.Value, _offScreenWrapperComponent.m_bounds, screenDataComponent);
+                    translation.Value = SpawnOnRightSide(translation.Value, offScreenWrapperComponent.m_bounds, screenDataComponent);
                 }
-                else if (_offScreenWrapperComponent.m_isOffScreenRight)
+                else if (offScreenWrapperComponent.m_isOffScreenRight)
                 {
-                    _translation.Value = SpawnOnLeftSide(_translation.Value, _offScreenWrapperComponent.m_bounds, screenDataComponent);
+                    translation.Value = SpawnOnLeftSide(translation.Value, offScreenWrapperComponent.m_bounds, screenDataComponent);
                 }
-                else if (_offScreenWrapperComponent.m_isOffScreenUp)
+                else if (offScreenWrapperComponent.m_isOffScreenUp)
                 {
-                    _translation.Value = SpawnOnBottomSide(_translation.Value, _offScreenWrapperComponent.m_bounds, screenDataComponent);
+                    translation.Value = SpawnOnBottomSide(translation.Value, offScreenWrapperComponent.m_bounds, screenDataComponent);
                 }
-                else if (_offScreenWrapperComponent.m_isOffScreenDown)
+                else if (offScreenWrapperComponent.m_isOffScreenDown)
                 {
-                    _translation.Value = SpawnOnTopSide(_translation.Value, _offScreenWrapperComponent.m_bounds, screenDataComponent);
+                    translation.Value = SpawnOnTopSide(translation.Value, offScreenWrapperComponent.m_bounds, screenDataComponent);
                 }
 
-                _offScreenWrapperComponent.m_isOffScreenDown = false;
-                _offScreenWrapperComponent.m_isOffScreenRight = false;
-                _offScreenWrapperComponent.m_isOffScreenUp = false;
-                _offScreenWrapperComponent.m_isOffScreenLeft = false;
+                offScreenWrapperComponent.m_isOffScreenDown = false;
+                offScreenWrapperComponent.m_isOffScreenRight = false;
+                offScreenWrapperComponent.m_isOffScreenUp = false;
+                offScreenWrapperComponent.m_isOffScreenLeft = false;
 
             }).ScheduleParallel();
         }
 
-        private static float3 SpawnOnRightSide(float3 _position, float _bounds, ScreenInfoComponent _screenDataComponent)
+        private static float3 SpawnOnRightSide(float3 position, float bounds, ScreenInfoComponent screenDataComponent)
         {
-            return new float3((_bounds + _screenDataComponent.m_width) * 0.5f, _position.y, 0); ;
+            return new float3((bounds + screenDataComponent.m_width) * 0.5f, position.y, 0); ;
         }
-        private static float3 SpawnOnLeftSide(float3 _position, float _bounds, ScreenInfoComponent _screenDataComponent)
+        
+        private static float3 SpawnOnLeftSide(float3 position, float bounds, ScreenInfoComponent screenDataComponent)
         {
-            return new float3(-(_bounds + _screenDataComponent.m_width) * 0.5f, _position.y, 0); ;
+            return new float3(-(bounds + screenDataComponent.m_width) * 0.5f, position.y, 0); ;
         }
-        private static float3 SpawnOnTopSide(float3 _position, float _bounds, ScreenInfoComponent _screenDataComponent)
+        
+        private static float3 SpawnOnTopSide(float3 position, float bounds, ScreenInfoComponent screenDataComponent)
         {
-            return new float3(_position.x, (_bounds + _screenDataComponent.m_height) * 0.5f, 0);
+            return new float3(position.x, (bounds + screenDataComponent.m_height) * 0.5f, 0);
         }
-        private static float3 SpawnOnBottomSide(float3 _position, float _bounds, ScreenInfoComponent _screenDataComponent)
+        
+        private static float3 SpawnOnBottomSide(float3 position, float bounds, ScreenInfoComponent screenDataComponent)
         {
-            return new float3(_position.x, -(_bounds + _screenDataComponent.m_height) * 0.5f, 0);
+            return new float3(position.x, -(bounds + screenDataComponent.m_height) * 0.5f, 0);
         }
     }
 

@@ -9,5 +9,4 @@ namespace Asteroids.Scripts.Components
         public bool m_inputForward;
         public bool m_inputShoot;
     }
-
 }
