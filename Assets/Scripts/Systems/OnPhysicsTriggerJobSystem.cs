@@ -5,7 +5,6 @@ using Unity.Jobs;
 using Unity.Physics;
 using Unity.Physics.Systems;
 
-
 namespace Assets.Scripts.Systems
 {
     public class OnPhysicsTriggerJobSystem : JobComponentSystem

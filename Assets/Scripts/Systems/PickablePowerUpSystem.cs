@@ -1,4 +1,5 @@
-﻿using Asteroids.Scripts.Components;
+﻿using System.Diagnostics;
+using Asteroids.Scripts.Components;
 using Unity.Entities;
 
 namespace Assets.Scripts.Systems
@@ -25,6 +26,7 @@ namespace Assets.Scripts.Systems
                 {
                     if (destroyable.m_mustBeDestroyed)
                     {
+                        UnityEngine.Debug.Log($"pickable power up. Entity {entity.Index}");
                         m_entityManager.DestroyEntity(entity);
                     }
 
