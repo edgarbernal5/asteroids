@@ -26,7 +26,7 @@ namespace Assets.Scripts.Systems
                 {
                     if (destroyable.m_mustBeDestroyed)
                     {
-                        UnityEngine.Debug.Log($"pickable power up. Entity {entity.Index}");
+                        //UnityEngine.Debug.Log($"pickable power up. Entity {entity.Index}");
                         m_entityManager.DestroyEntity(entity);
                     }
 
